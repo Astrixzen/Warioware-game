@@ -1,24 +1,38 @@
-[gd_scene format=3 uid="uid://dgc5rtn7dtmg1"]
+[gd_scene format=3 uid="uid://bn0e6dv2k325a"]
 
-[ext_resource type="Script" uid="uid://bvuqoi3187yge" path="res://minigame_timer.gd" id="1_11mgy"]
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="2_11mgy"]
 [ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="2_f6tb2"]
 
-[node name="minigame" type="Node2D" unique_id=1542181409]
-script = ExtResource("1_11mgy")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
+size = Vector2(1156.2188, 53.21875)
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=252178932]
-offset_top = -325.0
-offset_right = 1151.0
+[node name="minigame_1" type="Node2D" unique_id=1934713278]
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=534869801]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(100, 0)
+
+[node name="Background" type="TextureRect" parent="Parallax2D" unique_id=612485876]
+offset_left = -1132.0
+offset_top = -401.0
+offset_right = 5054.0
 offset_bottom = 648.0
 texture = ExtResource("2_f6tb2")
 
-[node name="timer" type="RichTextLabel" parent="." unique_id=901211506]
-offset_left = 45.0
-offset_top = 15.0
-offset_right = 591.0
-offset_bottom = 279.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/normal_font_size = 42
-text = "0.0"
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1313411720]
+position = Vector2(5, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=395037279]
+position = Vector2(571.125, 649.875)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=668856515]
+offset_left = -5.0
+offset_top = 626.0
+offset_right = 1139.0
+offset_bottom = 713.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." unique_id=396715556 instance=ExtResource("2_11mgy")]
+position = Vector2(138, 455)
