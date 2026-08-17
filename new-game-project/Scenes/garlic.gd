@@ -7,20 +7,16 @@ func _ready() -> void:
 	self_area.body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	var main_game = get_tree().current_scene
-	
+	# Check if it's the player character stepping into the zone layout boundaries
 	if body.name == "Player" and self.visible and not is_collected:
-		is_collected = true 
-		self.hide() 
+		is_collected = true
 		
-		main_game.garlic_collected += 1
-		
-		# INSTANT WIN CHECK
-		if main_game.garlic_collected >= 3:
-			main_game.set_process(false) 
-			
-			# 1. Bump the counter up right here so the level screen reads "Level 1"
-			Global.minigames_done = 1 
-			
-			# 2. Go straight to your intermission screen layout (CAPITAL S)
-			get_tree().change_scene_to_file("res://Scenes/level_screen.tscn")
+		# FIX: Run the hide and scoring mechanics SAFELY after the physics frame finishes calculating
+		call_deferred("_handle_safe_collection")
+
+func _handle_safe_collection() -> void:
+	self.hide() # Make the item clean disappear visually
+	
+	var main_game = get_tree().current_scene
+	if is_instance_valid(main_game) and main_game.has_method("garlic_collect"):
+		main_game.garlic_collect()

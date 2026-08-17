@@ -1,41 +1,53 @@
 extends Node2D
 
-@onready var timer_label: RichTextLabel = $Timer
-@onready var level_label: RichTextLabel = $Level
+# Grab your custom dragged-in ThemedTimer node instance
+@onready var themed_timer: Node2D = $ThemedTimer
 
-var time: float = 10.0 
 var garlic_collected = 0 
 var timer_end = false 
 
 func _ready() -> void:
-	Timer(10.0)
+	# 1. Fire off the countdown loop inside your child ThemedTimer
+	themed_timer.Timer(10.0)
+	
+	# 2. Halt this function execution right here until the timer loop completes
+	await themed_timer.timer_finished
+	
+	# 3. Flips your flag once time officially hits zero
+	timer_end = true 
 
 func _process(delta: float) -> void: 
-	timer_label.text = str(snapped(time, 0.10))
-	level_label.text = "Level " + str(Global.minigames_done)
+	# Win Condition Check
+	if garlic_collected == 3:
+		set_process(false) # Lock down the loop so scene transitions only trigger ONCE
+		Global.minigames_done = 1 # Force progression tracking state to level 1 complete
+		safely_change_scene("level_screen")
+		return
 	
-	# Lose Condition Check (Only fires if timer hits 0 AND player has less than 3 items)
-	if timer_end and garlic_collected < 3:
-		set_process(false) 
-		Global.minigames_done -= 1 
-		Global.lives -= 1 
-		get_tree().change_scene_to_file("res://scenes/level_screen.tscn")
+	# Lose Condition Check
+	if timer_end:
+		set_process(false) # Lock down the loop so scene transitions only trigger ONCE
+		Global.lives -= 1
+		Global.minigames_done -= 1
+		if Global.minigames_done < 0:
+			Global.minigames_done = 0
+			
+		safely_change_scene("level_screen")
 		return
 
-# Mechanical timer countdown loop
-func Timer(start_time: float):
-	time = start_time
-	
-	while time > 0.0:
-		if garlic_collected >= 3:
-			return # Immediately kill countdown if player won
-		await wait(0.1)
-		time -= 0.1
-		
-	if garlic_collected < 3:
-		time = 0.0
-		timer_end = true 
-	return
+# Connected to your physical garlic item node safe deferred signals
+func garlic_collect() -> void:
+	if not timer_end:
+		garlic_collected = garlic_collected + 1
 
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout
+# Path-safe scene switching engine tool
+func safely_change_scene(scene_name: String) -> void:
+	var possible_paths = [
+		"res://Scenes/" + scene_name + ".tscn",
+		"res://scenes/" + scene_name + ".tscn",
+		"res://" + scene_name + ".tscn"
+	]
+	for path in possible_paths:
+		if ResourceLoader.exists(path):
+			get_tree().change_scene_to_file(path)
+			return

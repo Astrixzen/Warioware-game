@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cijlnp6hmn7lg"]
+
+[ext_resource type="Texture2D" uid="uid://ccd7xqa2e32ap" path="res://Scenes/u lose.png" id="1_kts6d"]
+
+[node name="game_over_scene" type="Node2D" unique_id=1384983870]
+
+[node name="loser" type="TextureRect" parent="." unique_id=1519256852]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kts6d")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=201603905]
+clip_contents = false
+offset_left = 486.0
+offset_top = 81.0
+offset_right = 1040.0
+offset_bottom = 272.0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 100
+text = "OH NO?!"
+
+[node name="Subtext" type="RichTextLabel" parent="Title" unique_id=654458335]
+clip_contents = false
+layout_mode = 0
+offset_left = -19.0
+offset_top = 97.0
+offset_right = 467.0
+offset_bottom = 539.0
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/normal_font_size = 42
+text = "Wario is crying cause he cant e date on valorant :(
+
+
+YOU LOSE!"
+horizontal_alignment = 1
+vertical_alignment = 1

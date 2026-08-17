@@ -5,12 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="2_f6tb2"]
 [ext_resource type="Texture2D" uid="uid://ddam2ebe477w1" path="res://image-removebg-preview.png" id="3_f6tb2"]
 [ext_resource type="Script" uid="uid://b5jcljwnwrntn" path="res://Scenes/garlic.gd" id="5_5txvl"]
+[ext_resource type="PackedScene" uid="uid://duy5okjo53014" path="res://themed_timer.tscn" id="6_0uv5o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
 size = Vector2(1148, 49.609375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_11mgy"]
-size = Vector2(235.17188, 18.175293)
+size = Vector2(235.17188, 27.087646)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f6tb2"]
 size = Vector2(100, 33)
@@ -122,7 +123,7 @@ color = Color(0.88235295, 0.91764706, 0.2627451, 1)
 position = Vector2(20, 31)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7" unique_id=1842036676]
-position = Vector2(830, 408)
+position = Vector2(830, 403.54382)
 shape = SubResource("RectangleShape2D_11mgy")
 
 [node name="ColorRect" type="ColorRect" parent="Platform7" unique_id=618858150]
@@ -257,25 +258,4 @@ position = Vector2(-113, 327)
 position = Vector2(2069, 121)
 shape = SubResource("RectangleShape2D_8xit8")
 
-[node name="Timer" type="RichTextLabel" parent="." unique_id=1290234595]
-offset_left = 17.0
-offset_top = 79.0
-offset_right = 193.0
-offset_bottom = 176.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/normal_font_size = 42
-text = "0.0"
-
-[node name="Level" type="RichTextLabel" parent="." unique_id=374375930]
-offset_left = 20.0
-offset_top = 30.0
-offset_right = 196.0
-offset_bottom = 127.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 14
-theme_override_font_sizes/normal_font_size = 42
-text = "Level 0
-"
+[node name="ThemedTimer" parent="." unique_id=1153012548 instance=ExtResource("6_0uv5o")]

@@ -14,10 +14,10 @@ offset_bottom = 642.0
 texture = ExtResource("1_6yjli")
 
 [node name="GarlicContainer" type="HBoxContainer" parent="." unique_id=115968902]
-offset_left = 259.0
-offset_top = 125.0
-offset_right = 1042.0
-offset_bottom = 253.0
+offset_left = 401.0
+offset_top = 116.0
+offset_right = 1184.0
+offset_bottom = 244.0
 
 [node name="Garlic" type="TextureRect" parent="GarlicContainer" unique_id=1153021890]
 layout_mode = 2

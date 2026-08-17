@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://bci1jnbqfxwbv" path="res://Scenes/button_1.gd" id="3_o2adb"]
 [ext_resource type="PackedScene" uid="uid://duy5okjo53014" path="res://themed_timer.tscn" id="4_na7xi"]
 
-[node name="Minigame_1" type="Node2D" unique_id=1370121434]
+[node name="Minigame_2" type="Node2D" unique_id=1370121434]
 script = ExtResource("1_jd1nn")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1037653247]
