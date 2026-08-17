@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dgc5rtn7dtmg1"]
+
+[ext_resource type="Script" uid="uid://bvuqoi3187yge" path="res://minigame_timer.gd" id="1_11mgy"]
+[ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="2_f6tb2"]
+
+[node name="minigame" type="Node2D" unique_id=1542181409]
+script = ExtResource("1_11mgy")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=252178932]
+offset_top = -325.0
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("2_f6tb2")
+
+[node name="timer" type="RichTextLabel" parent="." unique_id=901211506]
+offset_left = 45.0
+offset_top = 15.0
+offset_right = 591.0
+offset_bottom = 279.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 42
+text = "0.0"

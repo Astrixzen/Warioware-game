@@ -1,3 +1,58 @@
 [gd_scene format=3 uid="uid://b32dtfg23d27s"]
 
+[ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="1_6yjli"]
+[ext_resource type="Script" uid="uid://c4iurrmogp1a5" path="res://Scenes/timer_screen.gd" id="1_glb20"]
+[ext_resource type="Texture2D" uid="uid://ddam2ebe477w1" path="res://image-removebg-preview.png" id="2_glb20"]
+
 [node name="level_screen" type="Node2D" unique_id=1963280727]
+script = ExtResource("1_glb20")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=962520612]
+offset_top = -6.0
+offset_right = 1151.0
+offset_bottom = 642.0
+texture = ExtResource("1_6yjli")
+
+[node name="GarlicContainer" type="HBoxContainer" parent="." unique_id=115968902]
+offset_left = 259.0
+offset_top = 125.0
+offset_right = 1042.0
+offset_bottom = 253.0
+
+[node name="Garlic" type="TextureRect" parent="GarlicContainer" unique_id=1153021890]
+layout_mode = 2
+texture = ExtResource("2_glb20")
+
+[node name="Garlic2" type="TextureRect" parent="GarlicContainer" unique_id=1620847330]
+layout_mode = 2
+texture = ExtResource("2_glb20")
+
+[node name="Garlic3" type="TextureRect" parent="GarlicContainer" unique_id=23788279]
+layout_mode = 2
+texture = ExtResource("2_glb20")
+
+[node name="Garlic4" type="TextureRect" parent="GarlicContainer" unique_id=2034018592]
+layout_mode = 2
+texture = ExtResource("2_glb20")
+
+[node name="Garlic5" type="TextureRect" parent="GarlicContainer" unique_id=1516142968]
+layout_mode = 2
+texture = ExtResource("2_glb20")
+
+[node name="Level" type="RichTextLabel" parent="." unique_id=24296034]
+offset_left = 522.0
+offset_top = 267.0
+offset_right = 962.0
+offset_bottom = 460.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 42
+text = "Level#"
+
+[node name="Timer" type="RichTextLabel" parent="." unique_id=1449445547]
+offset_left = 556.0
+offset_top = 338.0
+offset_right = 979.0
+offset_bottom = 656.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 42
+text = "0.0"
