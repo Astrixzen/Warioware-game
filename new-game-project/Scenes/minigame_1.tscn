@@ -1,32 +1,87 @@
 [gd_scene format=3 uid="uid://bn0e6dv2k325a"]
 
+[ext_resource type="Script" uid="uid://41lauly86np7" path="res://Scenes/minigame_1.gd" id="1_5txvl"]
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="2_11mgy"]
 [ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="2_f6tb2"]
+[ext_resource type="Texture2D" uid="uid://ddam2ebe477w1" path="res://image-removebg-preview.png" id="3_f6tb2"]
+[ext_resource type="Script" uid="uid://b5jcljwnwrntn" path="res://Scenes/garlic.gd" id="5_5txvl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(1156.2188, 53.21875)
+size = Vector2(1148, 49.609375)
 
-[node name="minigame_1" type="Node2D" unique_id=1934713278]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11mgy"]
+size = Vector2(235.17188, 18.175293)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f6tb2"]
+size = Vector2(100, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6yob"]
+size = Vector2(770, 38)
+
+[sub_resource type="Animation" id="Animation_o6yob"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Garlic/Garlic:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1026, 452)]
+}
+
+[sub_resource type="Animation" id="Animation_5txvl"]
+resource_name = "floating"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Garlic/Garlic:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1026, 452), Vector2(1026, 452)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uv5o"]
+_data = {
+&"RESET": SubResource("Animation_o6yob"),
+&"floating": SubResource("Animation_5txvl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xit8"]
+size = Vector2(70, 93)
+
+[node name="minigame_0" type="Node2D" unique_id=1934713278]
+script = ExtResource("1_5txvl")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=534869801]
 repeat_size = Vector2(1000, 0)
 autoscroll = Vector2(100, 0)
 
 [node name="Background" type="TextureRect" parent="Parallax2D" unique_id=612485876]
-offset_left = -1132.0
-offset_top = -401.0
-offset_right = 5054.0
-offset_bottom = 648.0
+offset_left = -1004.99994
+offset_top = -509.0
+offset_right = 5181.0
+offset_bottom = 540.0
+scale = Vector2(1.7582065, 1.1729914)
 texture = ExtResource("2_f6tb2")
+metadata/_edit_use_anchors_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1313411720]
+[node name="Platform1" type="StaticBody2D" parent="." unique_id=1313411720]
 position = Vector2(5, 8)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=395037279]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=395037279]
 position = Vector2(571.125, 649.875)
 shape = SubResource("RectangleShape2D_cvnsp")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=668856515]
+[node name="ColorRect" type="ColorRect" parent="Platform1" unique_id=668856515]
 offset_left = -5.0
 offset_top = 626.0
 offset_right = 1139.0
@@ -34,5 +89,193 @@ offset_bottom = 713.0
 color = Color(0.88235295, 0.91764706, 0.2627451, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Platform6" type="StaticBody2D" parent="." unique_id=1352652152]
+position = Vector2(10, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6" unique_id=744732475]
+position = Vector2(566, -36)
+shape = SubResource("RectangleShape2D_cvnsp")
+
+[node name="ColorRect" type="ColorRect" parent="Platform6" unique_id=1008298326]
+offset_left = -15.0
+offset_top = -97.0
+offset_right = 1129.0
+offset_bottom = -10.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=1049407758]
+position = Vector2(10, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=1597777845]
+position = Vector2(1048, 574)
+shape = SubResource("RectangleShape2D_11mgy")
+
+[node name="ColorRect" type="ColorRect" parent="Platform2" unique_id=1821844006]
+offset_left = 918.0
+offset_top = 564.0
+offset_right = 1156.0
+offset_bottom = 596.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
+[node name="Platform7" type="StaticBody2D" parent="." unique_id=1950494578]
+position = Vector2(20, 31)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7" unique_id=1842036676]
+position = Vector2(830, 408)
+shape = SubResource("RectangleShape2D_11mgy")
+
+[node name="ColorRect" type="ColorRect" parent="Platform7" unique_id=618858150]
+offset_left = 712.0
+offset_top = 389.0
+offset_right = 950.0
+offset_bottom = 421.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=915842860]
+position = Vector2(-459, -282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=37752389]
+position = Vector2(999.5, 578.91235)
+shape = SubResource("RectangleShape2D_f6tb2")
+
+[node name="ColorRect" type="ColorRect" parent="Platform3" unique_id=1246750904]
+offset_left = 948.0
+offset_top = 561.0
+offset_right = 1047.0
+offset_bottom = 596.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
+[node name="Platform8" type="StaticBody2D" parent="." unique_id=1235205206]
+position = Vector2(-918, -564)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8" unique_id=51819196]
+position = Vector2(1072, 779)
+shape = SubResource("RectangleShape2D_f6tb2")
+
+[node name="ColorRect" type="ColorRect" parent="Platform8" unique_id=1349721074]
+offset_left = 1025.0
+offset_top = 762.0
+offset_right = 1124.0
+offset_bottom = 794.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1359988315]
+position = Vector2(-459, -282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=1689200245]
+position = Vector2(1232, 439)
+shape = SubResource("RectangleShape2D_o6yob")
+
+[node name="ColorRect" type="ColorRect" parent="Platform4" unique_id=1438444875]
+offset_left = 836.0
+offset_top = 420.0
+offset_right = 1608.0
+offset_bottom = 460.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
 [node name="Player" parent="." unique_id=396715556 instance=ExtResource("2_11mgy")]
-position = Vector2(138, 455)
+position = Vector2(83, 543)
+
+[node name="Platform5" type="StaticBody2D" parent="." unique_id=1590007292]
+position = Vector2(80, 63)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=1574160623]
+position = Vector2(181, 297)
+shape = SubResource("RectangleShape2D_11mgy")
+
+[node name="ColorRect" type="ColorRect" parent="Platform5" unique_id=956360182]
+offset_left = 64.0
+offset_top = 287.0
+offset_right = 302.0
+offset_bottom = 319.0
+color = Color(0.88235295, 0.91764706, 0.2627451, 1)
+
+[node name="Garlic" type="Node2D" parent="." unique_id=1913116104]
+script = ExtResource("5_5txvl")
+
+[node name="Garlic" type="TextureRect" parent="Garlic" unique_id=775280697]
+offset_left = 1026.0
+offset_top = 452.0
+offset_right = 1154.0
+offset_bottom = 580.0
+texture = ExtResource("3_f6tb2")
+
+[node name="animation" type="AnimationPlayer" parent="Garlic" unique_id=1377154468]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_0uv5o")
+
+[node name="Area2D" type="Area2D" parent="Garlic" unique_id=1175965671]
+position = Vector2(-113, 327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garlic/Area2D" unique_id=1870225709]
+position = Vector2(1203, 184.5)
+shape = SubResource("RectangleShape2D_8xit8")
+
+[node name="Garlic2" type="Node2D" parent="." unique_id=1226200791]
+position = Vector2(-551, -117)
+script = ExtResource("5_5txvl")
+
+[node name="Garlic" type="TextureRect" parent="Garlic2" unique_id=861119108]
+offset_left = 641.0
+offset_top = 199.0
+offset_right = 769.0
+offset_bottom = 327.0
+texture = ExtResource("3_f6tb2")
+
+[node name="animation" type="AnimationPlayer" parent="Garlic2" unique_id=1584093027]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_0uv5o")
+
+[node name="Area2D" type="Area2D" parent="Garlic2" unique_id=475061826]
+position = Vector2(-113, 327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garlic2/Area2D" unique_id=579794875]
+position = Vector2(816, -68)
+shape = SubResource("RectangleShape2D_8xit8")
+
+[node name="Garlic3" type="Node2D" parent="." unique_id=189373231]
+position = Vector2(-940, -366)
+script = ExtResource("5_5txvl")
+
+[node name="Garlic" type="TextureRect" parent="Garlic3" unique_id=1529351715]
+offset_left = 1899.0
+offset_top = 386.0
+offset_right = 2027.0
+offset_bottom = 514.0
+texture = ExtResource("3_f6tb2")
+metadata/_edit_use_anchors_ = true
+
+[node name="animation" type="AnimationPlayer" parent="Garlic3" unique_id=1621298419]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_0uv5o")
+
+[node name="Area2D" type="Area2D" parent="Garlic3" unique_id=1384102811]
+position = Vector2(-113, 327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Garlic3/Area2D" unique_id=1212752966]
+position = Vector2(2069, 121)
+shape = SubResource("RectangleShape2D_8xit8")
+
+[node name="Timer" type="RichTextLabel" parent="." unique_id=1290234595]
+offset_left = 17.0
+offset_top = 79.0
+offset_right = 193.0
+offset_bottom = 176.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/normal_font_size = 42
+text = "0.0"
+
+[node name="Level" type="RichTextLabel" parent="." unique_id=374375930]
+offset_left = 20.0
+offset_top = 30.0
+offset_right = 196.0
+offset_bottom = 127.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/normal_font_size = 42
+text = "Level 0
+"

@@ -1,27 +1,28 @@
 extends Node2D
+@onready var timer: RichTextLabel = $timer #literally just the richlabeltext
 
-@onready var timer: RichTextLabel = $timer
+var time : float
 
-var time: float = 0.0
-
+# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Call your Timer function with the starting time when the scene starts
-	start_timer(10.0)
+	pass
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# Display the time rounded to 1 decimal place
-	timer.text = str(snapped(time, 0.1))
+	timer.text = str(snapped(time, 0.10)) # this makes names easier
 
-func start_timer(start_time: float) -> void:
+func Timer(start_time: float): # making a new function for timer countdown!
+	# we want the timer to go down, and when it reaches 0 it transitions 
+	# to the next scene!
+	
 	time = start_time
 	
-	while time > 0.0:
-		await wait(0.1)
-		time -= 0.1
+	while time > 0.0: # run if timer hasnt reached 0
+		await wait(0.10)
+		time = time - 0.10
 	
-	time = 0.0
-	# Change to your next scene here when timer reaches 0:
-	# get_tree().change_scene_to_file("res://YourNextScene.tscn")
-
-func wait(seconds: float):
-	await get_tree().create_timer(seconds).timeout
+	#when timer reaches 0
+	return
+	
+func wait(seconds: float) -> void: # write this simple function out for wait!
+	await get_tree().create_timer(seconds).timeout # makes u wait

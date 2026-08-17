@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://drebbh6vjio2k"]
+
+[ext_resource type="Texture2D" uid="uid://84kmb07dug65" path="res://wariogameLEVELscreen.png" id="1_j03pv"]
+[ext_resource type="Script" uid="uid://dsmin2qhoyhr0" path="res://Scenes/minigame_2.gd" id="1_jd1nn"]
+[ext_resource type="Texture2D" uid="uid://ddam2ebe477w1" path="res://image-removebg-preview.png" id="2_jd1nn"]
+[ext_resource type="Script" uid="uid://bci1jnbqfxwbv" path="res://Scenes/button_1.gd" id="3_o2adb"]
+[ext_resource type="PackedScene" uid="uid://duy5okjo53014" path="res://themed_timer.tscn" id="4_na7xi"]
+
+[node name="Minigame_1" type="Node2D" unique_id=1370121434]
+script = ExtResource("1_jd1nn")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1037653247]
+repeat_size = Vector2(1000, 0)
+autoscroll = Vector2(100, 0)
+
+[node name="Background" type="TextureRect" parent="Parallax2D" unique_id=1844220390]
+offset_left = -1004.99994
+offset_top = -527.0
+offset_right = 5181.0
+offset_bottom = 522.0
+scale = Vector2(1.7582065, 1.1729914)
+texture = ExtResource("1_j03pv")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button_1" type="TextureButton" parent="." unique_id=1214224347]
+offset_left = 213.0
+offset_top = 60.0
+offset_right = 1209.0
+offset_bottom = 389.0
+texture_normal = ExtResource("2_jd1nn")
+script = ExtResource("3_o2adb")
+
+[node name="Button_2" type="TextureButton" parent="." unique_id=1251739006]
+offset_left = 371.0
+offset_top = 426.0
+offset_right = 1367.0
+offset_bottom = 755.0
+texture_normal = ExtResource("2_jd1nn")
+script = ExtResource("3_o2adb")
+
+[node name="Button_3" type="TextureButton" parent="." unique_id=1086559780]
+offset_left = 878.0
+offset_top = 193.0
+offset_right = 1874.0
+offset_bottom = 522.0
+texture_normal = ExtResource("2_jd1nn")
+script = ExtResource("3_o2adb")
+
+[node name="Button_4" type="TextureButton" parent="." unique_id=904225754]
+offset_left = 1044.0
+offset_top = 522.0
+offset_right = 2040.0
+offset_bottom = 851.0
+texture_normal = ExtResource("2_jd1nn")
+script = ExtResource("3_o2adb")
+
+[node name="ThemedTimer" parent="." unique_id=1153012548 instance=ExtResource("4_na7xi")]
+
+[connection signal="pressed" from="Button_1" to="Button_1" method="_on_pressed"]
+[connection signal="pressed" from="Button_2" to="Button_2" method="_on_pressed"]
+[connection signal="pressed" from="Button_3" to="Button_3" method="_on_pressed"]
+[connection signal="pressed" from="Button_4" to="Button_4" method="_on_pressed"]
